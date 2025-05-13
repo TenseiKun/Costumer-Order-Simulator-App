@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 TextStyle textButton = const TextStyle(
   color: Colors.black,
 );
+TextStyle textButtonSmall = const TextStyle(
+  color: Colors.black,
+  fontSize: 12,
+);
 
 TextStyle appTitle = const TextStyle(
   color: Colors.white,

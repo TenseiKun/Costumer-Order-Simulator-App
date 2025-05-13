@@ -4,12 +4,19 @@ import 'package:flutter_gradient_app_bar/flutter_gradient_app_bar.dart';
 
 Scaffold scaffold1({
   required Widget body,
+  required Widget switchButton,
 }) {
   return Scaffold(
     backgroundColor: Colors.grey[300],
     appBar: GradientAppBar(
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [switchButton],
+        )
+      ],
       gradient: LinearGradient(
-        colors: [Colors.yellow, Colors.lime],
+        colors: [Colors.blue, Colors.cyan],
       ),
       title: textCenter(
         'FCFS Simulation',

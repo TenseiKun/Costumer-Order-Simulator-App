@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:fcsfs_order_process_plattechfinals/model.dart/randomFoods.dart';
 import 'package:fcsfs_order_process_plattechfinals/model.dart/randomNameModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fcsfs_order_process_plattechfinals/model.dart/queueModel.dart';
@@ -16,107 +17,161 @@ class Queue extends StatefulWidget {
 
 class _QueueState extends State<Queue> {
   List<Orders> queueList = [];
+  List<Foods> randomFoods = [
+    Foods(foodList: 'Burger'),
+    Foods(foodList: 'Spaghetti'),
+    Foods(foodList: 'Pizza\nSoda'),
+    Foods(foodList: 'Fried Chicken\nFries'),
+    Foods(foodList: 'Hotdog'),
+    Foods(foodList: 'Tapsilog'),
+    Foods(foodList: 'Pancit\nLumpia'),
+    Foods(foodList: 'Adobo'),
+    Foods(foodList: 'Kare-Kare\nRice'),
+    Foods(foodList: 'Sinigang'),
+    Foods(foodList: 'Bistek Tagalog\nIced Tea'),
+    Foods(foodList: 'Lechon Kawali\nRice\nSprite'),
+    Foods(foodList: 'Pork BBQ'),
+    Foods(foodList: 'Chicken Inasal'),
+    Foods(foodList: 'Shawarma\nJuice'),
+    Foods(foodList: 'Dimsum Platter'),
+    Foods(foodList: 'Tempura\nSushi\nMiso Soup'),
+    Foods(foodList: 'Fishball\nKikiam'),
+    Foods(foodList: 'Takoyaki'),
+    Foods(foodList: 'Burgers\nFries\nMilkshake'),
+    Foods(foodList: 'Carbonara\nGarlic Bread'),
+    Foods(foodList: 'Tocilog'),
+    Foods(foodList: 'Ham Sandwich\nApple Juice'),
+    Foods(foodList: 'Ramen\nGreen Tea'),
+    Foods(foodList: 'Mango Float'),
+    Foods(foodList: 'Halo-Halo'),
+    Foods(foodList: 'Ice Cream Sundae'),
+    Foods(foodList: 'Donut\nCoffee'),
+    Foods(foodList: 'Corned Beef\nRice'),
+    Foods(foodList: 'Choco Lava Cake\nVanilla Ice Cream'),
+    Foods(foodList: 'Milk Tea\nFries'),
+    Foods(foodList: 'Taho'),
+    Foods(foodList: 'Siomai\nRice'),
+    Foods(foodList: 'Tuna Sandwich\nIced Coffee'),
+    Foods(foodList: 'Eggplant Omelette\nGarlic Rice'),
+    Foods(foodList: 'Cheesecake\nFruit Shake'),
+    Foods(foodList: 'Nachos\nCola'),
+    Foods(foodList: 'Bibingka\nPuto Bumbong'),
+    Foods(foodList: 'Lasagna\nCaesar Salad'),
+    Foods(foodList: 'Chicken Nuggets\nJuice'),
+    Foods(foodList: 'Pork Sisig\nEgg\nRice'),
+    Foods(foodList: 'Mami\nPandesal'),
+    Foods(foodList: 'Beef Tapa\nGarlic Rice\nEgg'),
+    Foods(foodList: 'Vegetable Lumpia\nRice'),
+    Foods(foodList: 'Burger Steak\nMashed Potatoes'),
+    Foods(foodList: 'Bacon\nEgg\nToast'),
+    Foods(foodList: 'Grilled Cheese\nTomato Soup'),
+    Foods(foodList: 'Rice Bowl\nFruit Cup'),
+    Foods(foodList: 'Sweet and Sour Pork\nRice'),
+    Foods(foodList: 'Crispy Pata\nCoke'),
+    Foods(foodList: 'Kwek-Kwek\nPalamig'),
+  ];
   List<RandomName> randomNames = [
-    RandomName(characterName: 'David Agudo'),
-    RandomName(characterName: 'Criz Moreno'),
-    RandomName(characterName: 'Bonifacio Bautista'),
-    RandomName(characterName: 'Juan dela Cruz'),
-    RandomName(characterName: 'Maria Santos'),
-    RandomName(characterName: 'Josefina Tan'),
-    RandomName(characterName: 'Alfonso Reyes'),
-    RandomName(characterName: 'Liza Rodriguez'),
-    RandomName(characterName: 'Carlos Garcia'),
-    RandomName(characterName: 'Antonio Alvarez'),
-    RandomName(characterName: 'Elena Cruz'),
-    RandomName(characterName: 'Fernando Lopez'),
-    RandomName(characterName: 'Miguel Rivera'),
-    RandomName(characterName: 'Isabella Martinez'),
-    RandomName(characterName: 'Ryan Johnson'),
-    RandomName(characterName: 'Emily Thompson'),
-    RandomName(characterName: 'Michael Smith'),
-    RandomName(characterName: 'Sarah Davis'),
-    RandomName(characterName: 'James Williams'),
-    RandomName(characterName: 'John Brown'),
-    RandomName(characterName: 'Jessica Taylor'),
-    RandomName(characterName: 'Alexandra Lee'),
-    RandomName(characterName: 'Evan Clark'),
-    RandomName(characterName: 'Grace Harris'),
-    RandomName(characterName: 'Andrew Young'),
-    RandomName(characterName: 'Sophia Walker'),
-    RandomName(characterName: 'Jack Martinez'),
-    RandomName(characterName: 'Ava Robinson'),
-    RandomName(characterName: 'William Turner'),
-    RandomName(characterName: 'Charlotte White'),
-    RandomName(characterName: 'Henry King'),
-    RandomName(characterName: 'Jackie Campbell'),
-    RandomName(characterName: 'Oliver Wright'),
-    RandomName(characterName: 'Maya Phillips'),
-    RandomName(characterName: 'Carter Evans'),
-    RandomName(characterName: 'Isaiah Carter'),
-    RandomName(characterName: 'Lucas Mitchell'),
-    RandomName(characterName: 'Zoe Scott'),
-    RandomName(characterName: 'Grace Hill'),
-    RandomName(characterName: 'Dylan Adams'),
-    RandomName(characterName: 'Mia Perez'),
-    RandomName(characterName: 'Samantha Baker'),
-    RandomName(characterName: 'Ben Taylor'),
-    RandomName(characterName: 'Olivia Green'),
-    RandomName(characterName: 'Mason Nelson'),
-    RandomName(characterName: 'Chloe Young'),
-    RandomName(characterName: 'Daniel King'),
-    RandomName(characterName: 'Anna Scott'),
-    RandomName(characterName: 'Raul Delgado'),
-    RandomName(characterName: 'Ricardo Aquino'),
-    RandomName(characterName: 'Veronica Garcia'),
-    RandomName(characterName: 'Ariel Dizon'),
-    RandomName(characterName: 'Catherine Reyes'),
-    RandomName(characterName: 'Lorenzo Ramos'),
-    RandomName(characterName: 'Lily Sanchez'),
-    RandomName(characterName: 'Paolo Torres'),
-    RandomName(characterName: 'Miguel Salazar'),
-    RandomName(characterName: 'Isabelle Cruz'),
-    RandomName(characterName: 'Samuel Matthews'),
-    RandomName(characterName: 'Kaitlyn Peterson'),
-    RandomName(characterName: 'Victoria Wong'),
-    RandomName(characterName: 'Antonio Rodriguez'),
-    RandomName(characterName: 'Jennifer Bell'),
-    RandomName(characterName: 'Henry Jackson'),
-    RandomName(characterName: 'Sarah Murphy'),
-    RandomName(characterName: 'Lucas Harrison'),
-    RandomName(characterName: 'Sophia Martinez'),
-    RandomName(characterName: 'Liam Turner'),
-    RandomName(characterName: 'Aidan Lopez'),
-    RandomName(characterName: 'Gabrielle Johnson'),
-    RandomName(characterName: 'Zara Thompson'),
-    RandomName(characterName: 'Mason Martinez'),
-    RandomName(characterName: 'Diana Sullivan'),
-    RandomName(characterName: 'Ethan Garcia'),
-    RandomName(characterName: 'Chloe Morgan'),
-    RandomName(characterName: 'Nathaniel Ward'),
-    RandomName(characterName: 'Elijah Clark'),
-    RandomName(characterName: 'Olivia Baker'),
-    RandomName(characterName: 'Benjamin Lewis'),
-    RandomName(characterName: 'Jessica Wright'),
-    RandomName(characterName: 'Hannah Mitchell'),
-    RandomName(characterName: 'William Harris'),
-    RandomName(characterName: 'Evelyn Peterson'),
-    RandomName(characterName: 'Gabriel Evans'),
-    RandomName(characterName: 'Julia Cook'),
-    RandomName(characterName: 'Luke Rogers'),
-    RandomName(characterName: 'Emily Price'),
-    RandomName(characterName: 'Michael Cooper'),
-    RandomName(characterName: 'Lola Santos'),
-    RandomName(characterName: 'Karla Gutierrez'),
-    RandomName(characterName: 'Julian Medina'),
-    RandomName(characterName: 'Chester Ramirez'),
-    RandomName(characterName: 'Adrian Williams'),
-    RandomName(characterName: 'Ruby Santiago'),
+    RandomName(characterName: 'David Agudo', gender: 'male'),
+    RandomName(characterName: 'Criz Moreno', gender: 'male'),
+    RandomName(characterName: 'Bonifacio Bautista', gender: 'male'),
+    RandomName(characterName: 'Juan dela Cruz', gender: 'male'),
+    RandomName(characterName: 'Maria Santos', gender: 'female'),
+    RandomName(characterName: 'Josefina Tan', gender: 'female'),
+    RandomName(characterName: 'Alfonso Reyes', gender: 'male'),
+    RandomName(characterName: 'Liza Rodriguez', gender: 'female'),
+    RandomName(characterName: 'Carlos Garcia', gender: 'male'),
+    RandomName(characterName: 'Antonio Alvarez', gender: 'male'),
+    RandomName(characterName: 'Elena Cruz', gender: 'female'),
+    RandomName(characterName: 'Fernando Lopez', gender: 'male'),
+    RandomName(characterName: 'Miguel Rivera', gender: 'male'),
+    RandomName(characterName: 'Isabella Martinez', gender: 'female'),
+    RandomName(characterName: 'Ryan Johnson', gender: 'male'),
+    RandomName(characterName: 'Emily Thompson', gender: 'female'),
+    RandomName(characterName: 'Michael Smith', gender: 'male'),
+    RandomName(characterName: 'Sarah Davis', gender: 'female'),
+    RandomName(characterName: 'James Williams', gender: 'male'),
+    RandomName(characterName: 'John Brown', gender: 'male'),
+    RandomName(characterName: 'Jessica Taylor', gender: 'female'),
+    RandomName(characterName: 'Alexandra Lee', gender: 'female'),
+    RandomName(characterName: 'Evan Clark', gender: 'male'),
+    RandomName(characterName: 'Grace Harris', gender: 'female'),
+    RandomName(characterName: 'Andrew Young', gender: 'male'),
+    RandomName(characterName: 'Sophia Walker', gender: 'female'),
+    RandomName(characterName: 'Jack Martinez', gender: 'male'),
+    RandomName(characterName: 'Ava Robinson', gender: 'female'),
+    RandomName(characterName: 'William Turner', gender: 'male'),
+    RandomName(characterName: 'Charlotte White', gender: 'female'),
+    RandomName(characterName: 'Henry King', gender: 'male'),
+    RandomName(characterName: 'Jackie Campbell', gender: 'female'),
+    RandomName(characterName: 'Oliver Wright', gender: 'male'),
+    RandomName(characterName: 'Maya Phillips', gender: 'female'),
+    RandomName(characterName: 'Carter Evans', gender: 'male'),
+    RandomName(characterName: 'Isaiah Carter', gender: 'male'),
+    RandomName(characterName: 'Lucas Mitchell', gender: 'male'),
+    RandomName(characterName: 'Zoe Scott', gender: 'female'),
+    RandomName(characterName: 'Grace Hill', gender: 'female'),
+    RandomName(characterName: 'Dylan Adams', gender: 'male'),
+    RandomName(characterName: 'Mia Perez', gender: 'female'),
+    RandomName(characterName: 'Samantha Baker', gender: 'female'),
+    RandomName(characterName: 'Ben Taylor', gender: 'male'),
+    RandomName(characterName: 'Olivia Green', gender: 'female'),
+    RandomName(characterName: 'Mason Nelson', gender: 'male'),
+    RandomName(characterName: 'Chloe Young', gender: 'female'),
+    RandomName(characterName: 'Daniel King', gender: 'male'),
+    RandomName(characterName: 'Anna Scott', gender: 'female'),
+    RandomName(characterName: 'Raul Delgado', gender: 'male'),
+    RandomName(characterName: 'Ricardo Aquino', gender: 'male'),
+    RandomName(characterName: 'Veronica Garcia', gender: 'female'),
+    RandomName(characterName: 'Ariel Dizon', gender: 'female'),
+    RandomName(characterName: 'Catherine Reyes', gender: 'female'),
+    RandomName(characterName: 'Lorenzo Ramos', gender: 'male'),
+    RandomName(characterName: 'Lily Sanchez', gender: 'female'),
+    RandomName(characterName: 'Paolo Torres', gender: 'male'),
+    RandomName(characterName: 'Miguel Salazar', gender: 'male'),
+    RandomName(characterName: 'Isabelle Cruz', gender: 'female'),
+    RandomName(characterName: 'Samuel Matthews', gender: 'male'),
+    RandomName(characterName: 'Kaitlyn Peterson', gender: 'female'),
+    RandomName(characterName: 'Victoria Wong', gender: 'female'),
+    RandomName(characterName: 'Antonio Rodriguez', gender: 'male'),
+    RandomName(characterName: 'Jennifer Bell', gender: 'female'),
+    RandomName(characterName: 'Henry Jackson', gender: 'male'),
+    RandomName(characterName: 'Sarah Murphy', gender: 'female'),
+    RandomName(characterName: 'Lucas Harrison', gender: 'male'),
+    RandomName(characterName: 'Sophia Martinez', gender: 'female'),
+    RandomName(characterName: 'Liam Turner', gender: 'male'),
+    RandomName(characterName: 'Aidan Lopez', gender: 'male'),
+    RandomName(characterName: 'Gabrielle Johnson', gender: 'female'),
+    RandomName(characterName: 'Zara Thompson', gender: 'female'),
+    RandomName(characterName: 'Mason Martinez', gender: 'male'),
+    RandomName(characterName: 'Diana Sullivan', gender: 'female'),
+    RandomName(characterName: 'Ethan Garcia', gender: 'male'),
+    RandomName(characterName: 'Chloe Morgan', gender: 'female'),
+    RandomName(characterName: 'Nathaniel Ward', gender: 'male'),
+    RandomName(characterName: 'Elijah Clark', gender: 'male'),
+    RandomName(characterName: 'Olivia Baker', gender: 'female'),
+    RandomName(characterName: 'Benjamin Lewis', gender: 'male'),
+    RandomName(characterName: 'Jessica Wright', gender: 'female'),
+    RandomName(characterName: 'Hannah Mitchell', gender: 'female'),
+    RandomName(characterName: 'William Harris', gender: 'male'),
+    RandomName(characterName: 'Evelyn Peterson', gender: 'female'),
+    RandomName(characterName: 'Gabriel Evans', gender: 'male'),
+    RandomName(characterName: 'Julia Cook', gender: 'female'),
+    RandomName(characterName: 'Luke Rogers', gender: 'male'),
+    RandomName(characterName: 'Emily Price', gender: 'female'),
+    RandomName(characterName: 'Michael Cooper', gender: 'male'),
+    RandomName(characterName: 'Lola Santos', gender: 'female'),
+    RandomName(characterName: 'Karla Gutierrez', gender: 'female'),
+    RandomName(characterName: 'Julian Medina', gender: 'male'),
+    RandomName(characterName: 'Chester Ramirez', gender: 'male'),
+    RandomName(characterName: 'Adrian Williams', gender: 'male'),
+    RandomName(characterName: 'Ruby Santiago', gender: 'female'),
   ];
 
   Timer? _processTimer;
   Timer? _waitingTimer;
   final Set<Orders> recentlyAddedOrders = {};
   int _nextOrderNo = 1;
+  bool priorityNo = false;
 
   @override
   void initState() {
@@ -127,11 +182,14 @@ class _QueueState extends State<Queue> {
         for (var order in queueList) {
           if (order.processTime > 0) {
             order.processTime--;
+            if (order.processTime == 0) {
+              order.timeReachedZero = DateTime.now();
+            }
           } else {
             order.delayTime++;
           }
         }
-        queueList.sort((a, b) => a.processTime.compareTo(b.processTime));
+        refresh();
       });
     });
 
@@ -154,8 +212,11 @@ class _QueueState extends State<Queue> {
   void _AddQueue() {
     final random = Random();
     final randomIndex = random.nextInt(randomNames.length);
+    final randomIndex2 = random.nextInt(randomFoods.length);
     final newOrder = Orders(
       name: randomNames[randomIndex].characterName,
+      foods: randomFoods[randomIndex2].foodList,
+      specifiedGender: randomNames[randomIndex].gender,
       orderNo: _nextOrderNo++,
       processTime: random.nextInt(90) + 1,
       waitingTime: 0,
@@ -178,6 +239,27 @@ class _QueueState extends State<Queue> {
   void _deleteQueueAtIndex(int index) {
     setState(() {
       queueList.removeAt(index);
+    });
+  }
+
+  void refresh() {
+    setState(() {
+      if (priorityNo == false) {
+        queueList.sort((a, b) {
+          if (a.processTime == 0 && b.processTime == 0) {
+            return (a.timeReachedZero ?? DateTime.now())
+                .compareTo(b.timeReachedZero ?? DateTime.now());
+          } else if (a.processTime == 0) {
+            return -1;
+          } else if (b.processTime == 0) {
+            return 1;
+          } else {
+            return a.processTime.compareTo(b.processTime);
+          }
+        });
+      } else {
+        queueList.sort((a, b) => a.orderNo.compareTo(b.orderNo));
+      }
     });
   }
 
@@ -207,13 +289,22 @@ class _QueueState extends State<Queue> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Name: ${order.name}", style: textName),
-                  Text("Order No.: ${order.orderNo}", style: textName),
+                  Text("Order No. : ${order.orderNo}", style: textName),
                   Text("Process Time: ${order.processTime}",
                       style: textTimeforProcessDialog),
                   Text("Delay Time: ${order.delayTime}",
                       style: textTimeforWaitingDialog),
                   Text("Waiting Time: ${order.waitingTime}",
                       style: textTimeforWaitingDialog),
+                  space10,
+                  Text(
+                    'Food to be ordered: ',
+                    style: textName,
+                  ),
+                  Text(
+                    order.foods,
+                    style: textName,
+                  ),
                 ],
               ),
               actions: [
@@ -237,6 +328,14 @@ class _QueueState extends State<Queue> {
   @override
   Widget build(BuildContext context) {
     return scaffold1(
+      switchButton: Switch(
+          value: priorityNo,
+          onChanged: (bool value) {
+            setState(() {
+              priorityNo = value;
+            });
+            refresh();
+          }),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -257,17 +356,17 @@ class _QueueState extends State<Queue> {
                   ),
                   child: ListTile(
                     leading: Icon(
-                      Icons.circle_rounded,
+                      q.specifiedGender == 'male' ? Icons.man : Icons.woman,
                       color: Colors.grey,
                     ),
                     title: Text(
                       q.name,
                       style: textName,
                     ),
-                    trailing: Row(
+                    trailing: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Column(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -280,7 +379,7 @@ class _QueueState extends State<Queue> {
                                   ? textTimeforProcess
                                   : textTimeforWaiting,
                             ),
-                            space10,
+                            spaceW10,
                             textCenter(
                               "Waiting Time: ${q.waitingTime}",
                               style: textTimeforWaiting,
@@ -288,25 +387,29 @@ class _QueueState extends State<Queue> {
                           ],
                         ),
                         if (q.processTime == 0) ...[
-                          SizedBox(width: 10),
-                          ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+                          space10,
+                          Flexible(
+                            child: ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 0),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                minimumSize: Size(0, 0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                               ),
-                            ),
-                            onPressed: () => _deleteQueueAtIndex(index),
-                            icon: Icon(
-                              Icons.check,
-                              size: 18,
-                              color: Colors.black,
-                            ),
-                            label: Text(
-                              "Finish Order",
-                              style: textName,
+                              onPressed: () => _deleteQueueAtIndex(index),
+                              icon: Icon(
+                                Icons.check,
+                                size: 20,
+                                color: Colors.black,
+                              ),
+                              label: Text(
+                                "Finish Order",
+                                style: textButtonSmall,
+                              ),
                             ),
                           ),
                         ]
