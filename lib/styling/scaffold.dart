@@ -19,7 +19,7 @@ Scaffold scaffold1({
         colors: [Colors.blue, Colors.cyan],
       ),
       title: textCenter(
-        'FCFS Simulation',
+        'Order Queue Simulation',
         style: appTitle,
       ),
     ),
